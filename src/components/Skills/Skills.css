@@ -1,0 +1,110 @@
+/* src/components/Skills/Skills.css */
+
+/* ---------- section ---------- */
+.skills-section {
+  padding: 6rem 1.5rem;
+  background: var(--color-background);
+  overflow: hidden;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  transition: background-color 0.3s ease;
+}
+
+/* header is in index.css */
+
+/* ---------- slider ---------- */
+.skills-slider-container {
+  max-width: var(--container-width);
+  margin: 3rem auto 0;
+}
+
+.skills-slider {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.skills-slider:hover .skills-track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.skills-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: scroll 50s linear infinite;
+}
+
+/* ---------- card ---------- */
+.skill-card {
+  flex: 0 0 auto;
+  width: 130px;
+  height: 120px;
+  background: var(--color-background-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  cursor: pointer;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  background: var(--color-background-soft);
+  border-color: var(--color-primary-light);
+}
+
+/* ---------- icons & names ---------- */
+.skill-icon {
+  font-size: 3rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  color: var(--color-primary);
+}
+
+.skill-name {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* ---------- responsive tweaks ---------- */
+@media (max-width: 640px) {
+  .skills-track {
+    gap: 12px;
+    animation-duration: 35s;
+  }
+
+  .skill-card {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill-icon {
+    font-size: 2.4rem;
+  }
+
+  .skill-name {
+    font-size: 0.78rem;
+  }
+}
+

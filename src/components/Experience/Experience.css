@@ -1,0 +1,98 @@
+.experience-section {
+  padding: 6rem 1.5rem;
+  background-color: var(--color-background);
+  transition: background-color 0.3s ease;
+}
+
+.experience-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 56rem; /* 896px */
+  margin: 0 auto;
+}
+
+.experience-card {
+  background-color: var(--color-background-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.experience-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .experience-header {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.experience-title-company {
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .experience-title-company { margin-bottom: 0; }
+}
+
+.experience-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.experience-company {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--color-primary-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.experience-company:hover { color: var(--color-primary-dark); }
+.experience-company i { font-size: 1rem; }
+
+.experience-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+@media (min-width: 768px) { .experience-meta { align-items: flex-end; } }
+
+.meta-item { display: flex; align-items: center; gap: 0.5rem; }
+
+.experience-description {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.experience-tag {
+  padding: 0.25rem 0.75rem;
+  background-color: var(--color-primary-rgba);
+  color: var(--color-primary-dark);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  border: 1px solid var(--color-primary-light-rgba);
+}
+

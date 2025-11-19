@@ -1,0 +1,147 @@
+/* All classes renamed from .blog-* to .certifications-* */
+.certifications-section {
+  padding: 6rem 1.5rem;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.section-decorator {
+  width: 6rem;
+  height: 4px;
+  background: linear-gradient(to right, var(--color-primary-light), var(--color-secondary));
+  margin: 1rem auto 2rem;
+}
+
+.certifications-grid {
+  display: grid;
+  gap: 2rem;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .certifications-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .certifications-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.certifications-card {
+  background-color: var(--color-background-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.certifications-card:hover { 
+  border-color: var(--color-primary-light); 
+  transform: translateY(-8px);
+}
+
+.certifications-image-container {
+  position: relative;
+  height: 12rem;
+  overflow: hidden;
+}
+
+.certifications-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.certifications-card:hover .certifications-image { transform: scale(1.05); }
+
+.certifications-category {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.certifications-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.certifications-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem; /* Adjusted margin */
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+  flex-grow: 1; /* Allows title to take up space */
+}
+
+.certifications-card:hover .certifications-title { color: var(--color-primary-light); }
+
+/* Renamed from .blog-read-more */
+.certifications-view-details {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-primary-light);
+  font-weight: 500;
+  margin-top: auto; /* Pushes to the bottom */
+}
+
+.certifications-view-details i { margin-left: 0.5rem; transition: transform 0.3s ease; }
+
+.certifications-card:hover .certifications-view-details i { transform: translateX(5px); }
+
+.certifications-view-all-container {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.certifications-view-all-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: var(--radius);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.certifications-view-all-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
