@@ -74,10 +74,15 @@ npm run preview
 
 ---
 
-## 📬 **Contact**
+## 📬 Contact
 
-📧 Email: **[samhityadav123@gmail.com](mailto:samhityadav123@gmail.com)**
-🔗 LinkedIn: [https://www.linkedin.com/in/samhit-yadav-nambaru-83995a256/](https://www.linkedin.com/in/samhit-yadav-nambaru-83995a256/)
-💻 GitHub: [https://github.com/samhit-yadav](https://github.com/samhit-yadav)
+📧 **Email:**  
+samhityadav123@gmail.com
+
+🔗 **LinkedIn:**  
+https://www.linkedin.com/in/samhit-yadav-nambaru-83995a256/
+
+💻 **GitHub:**  
+https://github.com/samhit-yadav
 
 
