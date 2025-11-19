@@ -23,13 +23,13 @@
 /* -------- Card ---------- */
 .project-card {
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(148, 147, 147, 0.2);
   border-radius: 18px;
   overflow: hidden;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+  
 }
 
 .project-card:hover {
