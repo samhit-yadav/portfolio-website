@@ -34,22 +34,22 @@ A clean and responsive personal portfolio built using **React + Vite**, deployed
 
 ## 🚀 **Highlighted Projects**
 
-### **Identity Reconciliation System**
+### **1.Identity Reconciliation System**
 
 Graph-based identity merging engine achieving 100% accuracy across 1000+ test scenarios.
 ➡️ [https://github.com/samhit-yadav/fluxkart-frontend](https://github.com/samhit-yadav/fluxkart-frontend)
 
-### **AI-Powered Interview Assistant**
+### **2.AI-Powered Interview Assistant**
 
 GPT-driven technical interview tool with automated scoring and Redux-powered session persistence.
 
 
-### **Apartment Issue Resolution Platform**
+### **3.Apartment Issue Resolution Platform**
 
 Full-stack role-based solution with voting, image uploads, and issue tracking.
 
 
-### **Sorting Algorithm Visualizer**
+### **4.Sorting Algorithm Visualizer**
 
 Interactive React UI for visualizing sorting algorithms.
 ➡️ [https://github.com/samhit-yadav/Sorting-Algorithm-Visualizer-React](https://github.com/samhit-yadav/Sorting-Algorithm-Visualizer-React)
