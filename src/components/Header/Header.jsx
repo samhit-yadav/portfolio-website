@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
 
 export default function Header({ activeSection }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Initialize theme without localStorage
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Theme Setup
   const [theme, setTheme] = useState(() => {
-    // Check system preference, default to light if unavailable
     try {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     } catch {
@@ -15,21 +18,18 @@ export default function Header({ activeSection }) {
     }
   });
 
-  // Effect to apply the theme to the root element
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
-  
-  // Scroll detection for background
+
+  // Scroll background change
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
+  const toggleTheme = () => setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -41,40 +41,63 @@ export default function Header({ activeSection }) {
     { id: 'contact', label: 'Contact' }
   ];
 
+  // Smooth scroll helper
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Main navigation handler
+  const handleNavClick = async (id) => {
     setIsMenuOpen(false);
+
+    // If clicking Projects → Go to /projects
+    if (id === "projects") {
+      navigate("/projects");
+      return;
+    }
+
+    // If currently on home page, scroll normally
+    if (location.pathname === "/") {
+      scrollToSection(id);
+      return;
+    }
+
+    // If NOT on home page → navigate home THEN scroll
+    navigate("/");
+
+    // Wait a tiny moment for page to load, then scroll
+    setTimeout(() => scrollToSection(id), 200);
   };
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <nav className="header-nav container">
         <div className="header-content">
+
           {/* Logo */}
-          <div
-            className="header-logo"
-            onClick={() => scrollToSection('home')}
-          >
+          <div className="header-logo" onClick={() => handleNavClick("home")}>
             Samhit
           </div>
 
           {/* Desktop Navigation */}
           <div className="desktop-nav">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`nav-button ${activeSection === item.id ? 'active' : ''}`}
+                onClick={() => handleNavClick(item.id)}
+                className={`nav-button ${
+                  location.pathname === "/projects" && item.id === "projects"
+                    ? "active"
+                    : activeSection === item.id
+                }`}
               >
                 {item.label}
               </button>
             ))}
           </div>
 
-          {/* Theme Toggle Button */}
+          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             className="theme-toggle-button"
@@ -96,11 +119,15 @@ export default function Header({ activeSection }) {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="mobile-nav">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`nav-button ${activeSection === item.id ? 'active' : ''}`}
+                onClick={() => handleNavClick(item.id)}
+                className={`nav-button ${
+                  location.pathname === "/projects" && item.id === "projects"
+                    ? "active"
+                    : activeSection === item.id
+                }`}
               >
                 {item.label}
               </button>

@@ -10,16 +10,16 @@ const contactInfo = [
     link: "mailto:samhityadav123@gmail.com"
   },
   {
-    icon: "ri-code-box-fill",   
-    title: "Leetcode",
-    value: "Samhit1",
-    link: "https://leetcode.com/u/Samhit1/"
-  },
-  {
     icon: "ri-map-pin-line",
     title: "Location",
     value: "Visakhapatnam",
     link: "#"
+  },
+  {
+    icon: "ri-code-box-fill",   
+    title: "Leetcode",
+    value: "Samhit1",
+    link: "https://leetcode.com/u/Samhit1/"
   },
   {
     icon: "ri-terminal-box-fill",   

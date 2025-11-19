@@ -2,110 +2,105 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./About.css";
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.2 }
-  }
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
 };
 
-const fadeIn = (direction = "up") => ({
-  hidden: {
-    opacity: 0,
-    y: direction === "up" ? 30 : 0,
-    x: direction === "left" ? 30 : direction === "right" ? -30 : 0
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
-  }
-});
+const fadeLeft = {
+  hidden: { opacity: 0, x: 40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
 
 const features = [
   {
     icon: "ri-code-s-slash-line",
     title: "Full Stack Development",
-    description:
-      "Building end-to-end applications with modern technologies and best practices."
+    description: "Building robust, high-quality applications with solid frontend & backend engineering."
   },
   {
     icon: "ri-graduation-cap-line",
     title: "Academic Excellence",
-    description:
-      "Graduate in Mechanical Engineering and interested in cutting-edge technologies."
+    description: "Mechanical Engineering graduate from NIT Calicut with strong analytical foundations."
   },
   {
     icon: "ri-palette-line",
-    title: "UI/UX Design",
-    description:
-      "Creating intuitive and beautiful user interfaces that enhance user experience."
+    title: "UI/UX Focused",
+    description: "Creating clean, modern, and intuitive designs that enhance user experience."
   },
   {
     icon: "ri-rocket-2-line",
-    title: "Innovation",
-    description:
-      "Constantly exploring new technologies and pushing the boundaries of what's possible."
+    title: "Innovation Driven",
+    description: "Constantly exploring new technologies and solving real-world problems creatively."
   }
 ];
 
 const stats = [
-  { label: "Degree", value: "Bachelor's in Mechanical Engineering" },
+  { label: "Degree", value: "B.Tech, Mechanical Engineering" },
   { label: "Projects Completed", value: "5+" },
-  { label: "GPA", value: "7.86/10" },
-  { label: "Cricket", value: "All Rounder" },
-  { label: "Songs Listened", value: "∞" }
+  { label: "GPA", value: "7.86 / 10" },
+  { label: "Interests", value: "Cricket • Badminton • Music" }
 ];
 
 export default function About() {
   return (
     <section id="about" className="about-section">
       <div className="container">
-        {/* Section Header */}
-        <div className="section-header">
-          <h2 className="section-title">About Me</h2>
-          <div className="section-decorator"></div>
-        </div>
 
-        {/* About Grid */}
+        {/* Header */}
         <motion.div
-          className="about-grid"
+          className="section-header"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
+          viewport={{ once: true }}
+          variants={fadeUp}
         >
-          <motion.div className="about-text" variants={fadeIn("right")}>
-            <h3 className="about-subtitle">
-              Passionate about technology and innovation
-            </h3>
+          <h2 className="section-title">About Me</h2>
+          <div className="section-decorator"></div>
+        </motion.div>
+
+        {/* Intro + Stats */}
+        <div className="about-grid">
+          
+          {/* About Text */}
+          <motion.div className="about-text" variants={fadeRight} initial="hidden" whileInView="visible">
+            <h3 className="about-subtitle">Crafting clean, modern, and meaningful digital experiences.</h3>
+
             <p>
-              I'm a Mechanical Engineering graduate from NIT Calicut who thrives
-              on building digital solutions.
+              I’m a Full Stack Developer passionate about turning ideas into impactful solutions. With strong
+              foundations in <b><i>Java, Spring Boot, React</i></b> and modern software principles, I enjoy building 
+              tools and applications that make life easier.
             </p>
+
             <p>
-              My approach is simple: use a full-stack mindset to solve complex problems, from crafting responsive user interfaces to engineering robust back-end systems. My projects, often utilizing technologies like <b><i>React</i></b> and <b><i>Spring Boot</i></b> , are built on this foundation. 
+              As a Mechanical Engineering graduate from <b>NIT Calicut</b>, I bring analytical thinking and 
+              problem-solving skills into every project.
             </p>
+
             <p>
-              Off-screen, I enjoy the challenge of learning new languages and
-              playing sports like cricket and badminton.
+              Outside of tech, you’ll find me improving my game in cricket & badminton, or exploring new
+              technologies that inspire creativity.
             </p>
           </motion.div>
 
-          <motion.div className="about-stats-card" variants={fadeIn("left")}>
-            <h4 className="stats-title">Education & Stats</h4>
+          {/* Stats Card */}
+          <motion.div className="about-stats-card" variants={fadeLeft} initial="hidden" whileInView="visible">
+            <div className="stats-title">At a Glance</div>
             <div className="stats-grid">
-              {stats.map((stat, index) => (
-                <React.Fragment key={index}>
+              {stats.map((stat, i) => (
+                <div key={i} className="stat-item">
                   <span className="stat-label">{stat.label}</span>
                   <span className="stat-value">{stat.value}</span>
-                </React.Fragment>
+                </div>
               ))}
             </div>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* Features */}
         <motion.div
@@ -113,14 +108,13 @@ export default function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
         >
-          {features.map((feature, index) => (
+          {features.map((feature, idx) => (
             <motion.div
-              key={index}
+              key={idx}
               className="feature-card"
-              variants={fadeIn("up")}
-              whileHover={{ y: -10, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
+              variants={fadeUp}
+              whileHover={{ scale: 1.03 }}
             >
               <div className="feature-icon-wrapper">
                 <i className={feature.icon}></i>
@@ -130,6 +124,7 @@ export default function About() {
             </motion.div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );
